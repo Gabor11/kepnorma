@@ -1,0 +1,5 @@
+#!/bin/bash
+
+resize -s 25 100; clear
+cd ~/Asztal/kepnorma
+sudo python3 ~/Asztal/kepnorma/kepnormapp.py

@@ -1,0 +1,10 @@
+# Exclude specific directories
+.vscode/
+__pycache__/
+EG_kesz/
+letoltott/
+
+# Exclude specific files
+kepnormapp.lnk
+todo.txt
+randomtest.py
