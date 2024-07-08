@@ -2,7 +2,8 @@
 .vscode/
 __pycache__/
 EG_kesz/
-letoltott/
+letoltott/*
+!letoltott/ide_jonnek_a_letoltott_kepek.txt
 
 # Exclude specific files
 kepnormapp.lnk

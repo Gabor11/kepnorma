@@ -1,0 +1,1 @@
+Ezt a fájlt akár törölni is lehet a szkript letöltése után.
