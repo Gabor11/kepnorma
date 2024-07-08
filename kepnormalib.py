@@ -212,9 +212,16 @@ def folderSweeperHEIC2JPG(folder):
         if name.is_file():
             isHEIC = re.search(".heic$", name.name, re.IGNORECASE)
             if isHEIC:
-                subprocess.call(imagemagick + " " + os.path.join(folder, name.name) + " " + os.path.join(folder, name.name)[0:-5] + ".jpg", shell=True)
+                res = subprocess.run(imagemagick + " " + os.path.join(folder, name.name) + " " + os.path.join(folder, name.name)[0:-5] + ".jpg", shell=True)
                 heicProcessed += 1
-                print("\r {} HEIC fájl átalakítva JPG formátumra.".format(str(heicProcessed)), end='')
+                if res.returncode == 0:
+                    print("\r {} HEIC fájl átalakítva JPG formátumra.".format(str(heicProcessed)), end='')
+                else:
+                    if heicProcessed == 1:
+                        print("Sajnos a szkript nincs felkészítve HEIC fájlok átalakítára / valamiért nem elérhető az ehhez szükséges program.")
+                        return
+    if heicProcessed != 0:
+       print("")
 
 
 def indexOfSuchRecordInList(simpleRecord, actualFolderRecords):
