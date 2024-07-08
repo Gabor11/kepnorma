@@ -218,11 +218,8 @@ def folderSweeperHEIC2JPG(folder):
                     print("\r {} HEIC fájl átalakítva JPG formátumra.".format(str(heicProcessed)), end='')
                 else:
                     if heicProcessed == 1:
-                        print("Sajnos a szkript nincs felkészítve HEIC fájlok átalakítára / valamiért nem elérhető az ehhez szükséges program.")
+                        print("Sajnos a szkript nincs felkészítve HEIC fájlok átalakítára / valamiért nem elérhető az ehhez szükséges program.\n")
                         return
-    if heicProcessed != 0:
-       print("")
-
 
 def indexOfSuchRecordInList(simpleRecord, actualFolderRecords):
     for record in actualFolderRecords:
@@ -306,7 +303,7 @@ def createStandardStructure():
                 filepath = record["folder"] + os.path.sep + file.name
                 shutil.copy2(filepath, localBigPicFolder)
                 shutil.move(localBigPicFolder + os.path.sep + file.name, localBigPicFolder + os.path.sep + record["date"] + "_" + fi + "_" + record["event"] + "_" + str(counter).zfill(3) + ".jpg")
-    print("¸_______________________________________¸")
+    print("\n¸_______________________________________¸")
     for actualFolder in os.scandir(targetFolder):
         localBigPicFolder = os.path.join(actualFolder, bigPicFolder)
         for pic in os.scandir(localBigPicFolder):
