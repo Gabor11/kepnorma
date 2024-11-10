@@ -284,7 +284,7 @@ def createStandardStructure():
         if monthlyGrouping:
             actualFolder = os.path.join(targetFolder, getAlterDate(extractYear(record["date"]), extractMonth(record["date"])) + '_' + fi)
         else:
-            actualFolder = os.path.join(targetFolder, record["date"] + '_' + fi + '_' + record["event"])
+            actualFolder = os.path.join(targetFolder, record["date"] + '_' + fi + record["event"])
         localBigPicFolder = os.path.join(actualFolder, bigPicFolder)
         if not os.path.exists(actualFolder):
             os.mkdir(actualFolder, mode=0o777)
@@ -302,7 +302,7 @@ def createStandardStructure():
                 counter += 1
                 filepath = record["folder"] + os.path.sep + file.name
                 shutil.copy2(filepath, localBigPicFolder)
-                shutil.move(localBigPicFolder + os.path.sep + file.name, localBigPicFolder + os.path.sep + record["date"] + "_" + fi + "_" + record["event"] + "_" + str(counter).zfill(3) + ".jpg")
+                shutil.move(localBigPicFolder + os.path.sep + file.name, localBigPicFolder + os.path.sep + record["date"] + "_" + fi + record["event"] + "_" + str(counter).zfill(3) + ".jpg")
     print("\n¸_______________________________________¸")
     for actualFolder in os.scandir(targetFolder):
         localBigPicFolder = os.path.join(actualFolder, bigPicFolder)
@@ -369,17 +369,17 @@ def makeStandardSmallVersionOfPicture(picPath, smallPicTargetFolder):
     # determining height and width
     h, w, c = img.shape
     if h > shorterSide and w > shorterSide:
-	    if h < w:
-	    	ratio = w / h
-	    	nh = shorterSide
-	    	nw = int(shorterSide * ratio)
-	    else:
-	    	ratio = h / w
-	    	nw = shorterSide
-	    	nh = int(shorterSide * ratio)
+        if h < w:
+            ratio = w / h
+            nh = shorterSide
+            nw = int(shorterSide * ratio)
+        else:
+            ratio = h / w
+            nw = shorterSide
+            nh = int(shorterSide * ratio)
     else:
-    	nw = w
-    	nh = h
+        nw = w
+        nh = h
     
     # creating new image
     nimg = cv2.resize(img, (nw,nh))
