@@ -383,7 +383,7 @@ def makeStandardSmallVersionOfPicture(picPath, smallPicTargetFolder):
     
     # creating new image
     nimg = cv2.resize(img, (nw,nh))
-    cv2.imwrite(newPicName, nimg)
+    cv2.imwrite(newPicName, nimg, (cv2.IMWRITE_JPEG_QUALITY, 80))
     shutil.move(newPicName, smallPicTargetFolder)
     
     
